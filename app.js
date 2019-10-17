@@ -19,22 +19,27 @@ app.get('/', (req, res) => {
 
 app.get('/movies', (req, res) => {
     //Get movies
-    res.send("Getting movies");
+    let gen = req.query.gen;
+    res.send("Getting movies: " + gen);
 });
 
 app.post('/add', (req, res) => {
     //Add movie
-    res.send("Adding movies");
+    let movie = req.body.movie;
+    res.send("Adding movie: " + JSON.stringify(movie));
 });
 
 app.post('/mod', (req, res) => {
     //Modify movie
-    res.send("Modifying movies");
+    let movie = req.body.movie;
+    res.send("Modifying movie: " + JSON.stringify(movie));
 });
 
-app.post('del', (req, res) => {
+app.post('/del', (req, res) => {
     //Delete movie
-    res.send("Deleting movies");
+    let id = req.body.id;
+    let movie = req.body.movie;
+    res.send("Deleting movie: " + movie);
 });
 
 // Start server
