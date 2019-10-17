@@ -76,8 +76,35 @@ app.post('/add', (req, res) => {
 
 app.post('/mod', (req, res) => {
     //Modify movie
-    let movie = req.body.movie;
-    res.send("Modifying movie: " + JSON.stringify(movie));
+    let old_movie = req.body.old;
+    let new_movie = req.body.new;
+    mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+        if (err) {
+            console.log(`Error: ${err}`);
+            res.send(`Error: ${err}`);
+        }
+
+        console.log("We have succesfully connected");
+
+        let ypdb = db.db('yudonpayMovies');
+        let query = { name: old_movie.name, yearRelease: old_movie.yearRelease };
+        let update = {
+            $set: {
+                name: new_movie.name,
+                director: new_movie.director,
+                yearRelease: new_movie.yearRelease,
+                genre: new_movie.genre
+            }
+        };
+        ypdb.collection('movies').updateOne(query, update, (er, data) => {
+            if (err) {
+                console.log(`Error: ${er}`);
+                res.send(`Error: ${er}`);
+            }
+            res.send(`Movie Modified: ${data}`);
+        });
+        db.close();
+    });
 });
 
 app.post('/del', (req, res) => {
