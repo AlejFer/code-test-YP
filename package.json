@@ -1,0 +1,11 @@
+{
+  "name": "yudonpaytest",
+  "version": "1.0.0",
+  "description": "Hola y gracias por aceptar la prueba para futuros candidatos de Yudonpay. Para la realización de esta se dispondrá de 1 día.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
