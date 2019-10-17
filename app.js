@@ -82,9 +82,27 @@ app.post('/mod', (req, res) => {
 
 app.post('/del', (req, res) => {
     //Delete movie
-    let id = req.body.id;
-    let movie = req.body.movie;
-    res.send("Deleting movie: " + movie);
+    let name = req.body.name;
+    let year = req.body.year;
+    mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
+        if (err) {
+            console.log(`Error: ${err}`);
+            res.send(`Error: ${err}`);
+        }
+
+        console.log("We have succesfully connected");
+
+        let ypdb = db.db('yudonpayMovies');
+        let query = { name: name, yearRelease: year };
+        ypdb.collection('movies').deleteOne(query, (er, data) => {
+            if (err) {
+                console.log(`Error: ${er}`);
+                res.send(`Error: ${er}`);
+            }
+            res.send(`Movie Deleted: ${data}`);
+        });
+        db.close();
+    });
 });
 
 // Start server
