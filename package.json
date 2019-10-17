@@ -1,16 +1,17 @@
 {
-  "name": "yudonpaytest",
-  "version": "1.0.0",
-  "description": "Hola y gracias por aceptar la prueba para futuros candidatos de Yudonpay. Para la realización de esta se dispondrá de 1 día.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongodb": "^3.3.3"
-  }
+    "name": "yudonpaytest",
+    "version": "1.0.0",
+    "description": "Hola y gracias por aceptar la prueba para futuros candidatos de Yudonpay. Para la realización de esta se dispondrá de 1 día.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "mongodb": "^3.3.3"
+    }
 }
